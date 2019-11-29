@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import ReactMapGL from 'react-map-gl';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
-export default class Map extends Component {
+export default class Main extends Component {
 
   state = {
     viewport: {
@@ -17,7 +19,6 @@ export default class Map extends Component {
 
   handleMapClick = (e) => {
     const [latitude, longitude] = e.lngLat;
-
   }
 
   componentDidMount() {

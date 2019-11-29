@@ -1,10 +1,15 @@
 import React from "react";
-import Main from './pages/main'
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <Main />
-  );
-}
+import store from './store';
+import Routes from './routes';
+
+import './index.css';
+
+const App = () => (
+  <Provider store={store}>
+    <Routes />
+  </Provider>
+)
 
 export default App;
