@@ -8,9 +8,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
+.modal.active {
+  display: block;
 }

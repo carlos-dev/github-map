@@ -19,6 +19,9 @@ export default class Main extends Component {
 
   handleMapClick = (e) => {
     const [latitude, longitude] = e.lngLat;
+    let modal = document.getElementsByClassName('modal');
+
+    modal[0].classList.add('active')
   }
 
   componentDidMount() {
