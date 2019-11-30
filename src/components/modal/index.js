@@ -8,13 +8,17 @@ export default class Modal extends Component {
     e.target.classList.remove('active')
   }
 
+  handleAddUser = () => {
+
+  }
+
   render() {
     return (
       <div className="modal" onClick={this.handleCloseMap}>
         <div>
           <h3>Adicionar novo usuário</h3>
 
-          <form>
+          <form onSubmit={this.handleAddUser}>
             <input type="text" />
 
             <div className="buttons">
