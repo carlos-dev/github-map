@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as UserActions from '../../store/actions/users';
 
 import './index.css';
 
-export default class Modal extends Component {
+class Modal extends Component {
+  state = {
+    username: ''
+  }
+
   handleCloseMap = (e) => {
     e.stopPropagation();
     e.target.classList.remove('active')
   }
 
-  handleAddUser = () => {
-
+  handleAddUser = (event) => {
+    event.preventDefault();
+    this.props.addUser();
   }
 
   render() {
@@ -19,7 +28,12 @@ export default class Modal extends Component {
           <h3>Adicionar novo usuário</h3>
 
           <form onSubmit={this.handleAddUser}>
-            <input type="text" />
+            <input
+              type="text"
+              placeholder="usuário"
+              value={this.state.username}
+              onChange={e => this.setState({ username: e.target.value })}
+            />
 
             <div className="buttons">
               <button>Cancelar</button>
@@ -31,3 +45,11 @@ export default class Modal extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  users: state.users
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
