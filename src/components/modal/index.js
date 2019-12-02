@@ -8,17 +8,25 @@ import './index.css';
 
 class Modal extends Component {
   state = {
-    username: ''
+    usernameInput: ''
   }
 
-  handleCloseMap = (e) => {
-    e.stopPropagation();
-    e.target.classList.remove('active')
+  handleCloseMap = (event) => {
+    const modal = document.querySelector('.modal');
+
+    event.stopPropagation();
+    modal.classList.remove('active')
   }
 
   handleAddUser = (event) => {
+    event.stopPropagation();
     event.preventDefault();
-    this.props.addUser();
+    this.props.addUserRequest(this.state.usernameInput);
+  }
+
+  preventEvents = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   render() {
@@ -32,11 +40,14 @@ class Modal extends Component {
               type="text"
               placeholder="usuário"
               value={this.state.username}
-              onChange={e => this.setState({ username: e.target.value })}
+              onChange={e => this.setState({ usernameInput: e.target.value })}
+              onClick={this.preventEvents}
+              name="username"
+              required
             />
 
             <div className="buttons">
-              <button>Cancelar</button>
+              <button onClick={this.handleCloseMap}>Cancelar</button>
               <button>Salvar</button>
             </div>
           </form>
