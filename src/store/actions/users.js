@@ -1,5 +1,6 @@
 export const addUserRequest = username => ({
-  type: 'ADD_USER_REQUEST'
+  type: 'ADD_USER_REQUEST',
+  payload: { username }
 })
 
 export const addUserSuccess = data => ({
