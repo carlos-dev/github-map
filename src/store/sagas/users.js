@@ -4,12 +4,12 @@ import api from '../../services/api';
 import { addUserSuccess } from '../actions/users';
 
 export function* addUser(action) {
-  const { data } = yield call(api.get, `/repos/${action.payload.username}`)
-  console.log(data)
+  const { data } = yield call(api.get, `/users/${action.payload.username}`)
   const usernameData = {
     id: data.id,
-    name: data.full_name,
-    description: data.description
+    avatar: data.avatar_url,
+    name: data.name,
+    login: data.login
   }
 
   yield put(addUserSuccess(usernameData));

@@ -8,16 +8,17 @@ import './index.css';
 
 class ListUsers extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="list-users">
         <div className="user">
 
           {this.props.users.map(user => (
               <div className="flex" key={user.id}>
+                <img className="avatar" src={user.avatar} />
+
                 <div>
                   <p>{user.name}</p>
-                  <small>{user.username}</small>
+                  <small>{user.login}</small>
                 </div>
 
                 <div>
