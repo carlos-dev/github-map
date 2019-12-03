@@ -43,7 +43,11 @@ class Main extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState)
+    if (nextProps.users.length) {
+      console.log(nextState)
+      //this.handleOnResult();
+    }
+
     return nextState;
   }
 
@@ -74,22 +78,21 @@ class Main extends Component {
   };
 
   handleOnResult = event => {
-    console.log(event.result);
-    this.setState({
-      searchResultLayer: new GeoJsonLayer({
-        id: "search-result",
-        data: event.result.geometry,
-        getFillColor: [255, 0, 0, 128],
-        getRadius: 1000,
-        pointRadiusMinPixels: 10,
-        pointRadiusMaxPixels: 10
-      })
-    });
+    console.log(event)
+    // this.setState({
+    //   searchResultLayer: new GeoJsonLayer({
+    //     id: "search-result",
+    //     data: event.result.geometry,
+    //     getFillColor: [255, 0, 0, 128],
+    //     getRadius: 1000,
+    //     pointRadiusMinPixels: 10,
+    //     pointRadiusMaxPixels: 10
+    //   })
+    // });
   };
 
   render() {
     const { viewport, searchResultLayer } = this.state;
-    console.log(this.state)
     return (
       <Fragment>
         <ReactMapGL
@@ -104,7 +107,7 @@ class Main extends Component {
           <Geocoder
             mapRef={this.mapRef}
             mapboxApiAccessToken={MAPBOX_TOKEN}
-            onResult={this.handleOnResult}
+            onResult={(e) => this.handleOnResult(e)}
             onViewportChange={this.handleGeocoderViewportChange}
           />
         </ReactMapGL>
