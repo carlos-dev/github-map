@@ -8,6 +8,7 @@ import './index.css';
 
 class ListUsers extends Component {
   render() {
+    console.log(this.props)
     return (
       <div className="list-users">
         <div className="user">
@@ -22,7 +23,7 @@ class ListUsers extends Component {
                 </div>
 
                 <div>
-                  <span className="btn-close">x</span>
+                  <span className="btn-close" onClick={() => this.props.removeUser(user.id)}>x</span>
                 </div>
               </div>
             )

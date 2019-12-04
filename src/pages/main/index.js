@@ -66,7 +66,7 @@ class Main extends Component {
   // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
   handleGeocoderViewportChange = viewport => {
     const geocoderDefaultOverrides = { transitionDuration: 1000 };
-
+    console.log(this.state)
     return this.handleViewportChange({
       ...viewport,
       ...geocoderDefaultOverrides
@@ -89,7 +89,6 @@ class Main extends Component {
 
   render() {
     const { viewport, searchResultLayer } = this.state;
-    console.log(this.state)
     return (
       <Fragment>
         <ReactMapGL
