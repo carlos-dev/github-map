@@ -29,6 +29,11 @@ class Modal extends Component {
     event.stopPropagation();
   }
 
+  setTextInput = event => {
+    let inputMapGL = document.getElementsByClassName('mapboxgl-ctrl-geocoder--input');
+    inputMapGL.value = event.target.value
+  }
+
   render() {
     return (
       <div className="modal" onClick={this.handleCloseMap}>
@@ -42,6 +47,7 @@ class Modal extends Component {
               value={this.state.username}
               onChange={e => this.setState({ usernameInput: e.target.value })}
               onClick={this.preventEvents}
+              onKeyUp={this.setTextInput}
               name="username"
               required
             />
